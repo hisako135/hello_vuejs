@@ -9,6 +9,8 @@ new Vue({
     list: task_list,
   },
   components: {
-    MyTaskList: require('./components/task_list.vue')
+    MyTaskList: require('./components/task_list.vue'),
+    MyComponent: require('./components/my-component.vue'),
+    MyComponent: require('./components/msg-box.vue')
   }
 })

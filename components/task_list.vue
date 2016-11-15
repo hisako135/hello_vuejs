@@ -1,9 +1,9 @@
 <!-- vim: set ft=html : -->
 
 <style>
-  .my-task-list {
+/*  .my-task-list {
     color: #ffcc00;
-  }
+  } */
 </style>
 
 <template>
