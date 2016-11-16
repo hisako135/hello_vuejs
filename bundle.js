@@ -36,16 +36,17 @@ var mwRatingMsg = require('./mixins/mw-rating-msg.js');
 
 new Vue({
   el: 'body',
-  mixins: {
-    mwRatingMsg: mwRatingMsg
-  },
+  // mixins: {
+  //   mwRatingMsg
+  // },
   data: {
     // list: task_list,
     showHideFlg: false
   },
   components: {
-    // MyTaskList: require('./components/task_list.vue'),
     MyComponent: require('./components/test-my-component.vue')
+    // MyTaskList: require('./components/task_list.vue'),
+    // MsgBox: require('./components/test-msg-box.vue')
   }
 });
 

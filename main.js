@@ -15,8 +15,11 @@ new Vue({
     showHideFlg: false
   },
   components: {
+    MyComponent: require('./components/test-my-component.vue')
     // MyTaskList: require('./components/task_list.vue'),
-    MyComponent: require('./components/test-my-component.vue'),
-    // MsgBox: require('./components/test-msg-box.vue')
-  }
+    //MsgBox: require('./components/test-msg-box.vue')
+  },
+    created: function(){
+        console.log('できたで2！');
+    }
 })
