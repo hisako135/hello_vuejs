@@ -12,7 +12,7 @@ module.exports = {
         }
     },
     created: function(){
-        console.log('できたで！', this);
+        console.log('できたで100！');
     }
 }
 </script>

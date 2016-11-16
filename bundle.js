@@ -1,4 +1,100 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("\n/*  .my-task {\n    color: #f0c;\n  } */\n")
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Task = require('../model/task').default;
+
+exports.default = {
+  props: {
+    task: { type: Object, default: function _default() {
+        return new Task();
+      } }
+  },
+  methods: {
+    saveTask: function saveTask() {
+      this.$dispatch('task-changed');
+    },
+    removeTask: function removeTask() {
+      this.$dispatch('task-removed', this.task);
+    }
+  },
+  created: function created() {
+    console.log("created");
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"my-task\">\n  <label>タイトル</label>\n  <input type=\"text\" v-model=\"task.title\" placeholder=\"タイトルを入力してください\" v-on:keyup.enter=\"saveTask\" v-on:blur=\"saveTask\">\n  <span v-on:click=\"removeTask\">削除</span>\n</div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/home/hello_vuejs/components/task.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["\n/*  .my-task {\n    color: #f0c;\n  } */\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"../model/task":6,"vue":10,"vue-hot-reload-api":9,"vueify-insert-css":11}],2:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("\n/*  .my-task-list {\n    color: #ffcc00;\n  } */\n")
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var TaskList = require('../model/task_list').default;
+var Task = require('../model/task').default;
+
+exports.default = {
+  props: {
+    list: { type: Object, default: function _default() {
+        return new TaskList();
+      } }
+  },
+  components: {
+    MyTask: require('./task.vue')
+  },
+  methods: {
+    addTask: function addTask() {
+      this.list.add(new Task());
+    }
+  },
+  events: {
+    'task-changed': function taskChanged() {
+      this.list.save();
+    },
+    'task-removed': function taskRemoved(task) {
+      var index = this.list.tasks.indexOf(task);
+      this.list.tasks.splice(index, 1);
+      this.list.save();
+    }
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"my-task-list\">\n  <div>{{list.title}}</div>\n  <ul>\n    <li v-for=\"task in list.tasks\">\n      <my-task :task=\"task\"></my-task>\n    </li>\n  </ul>\n  <div v-on:click=\"addTask\">タスクを追加する</div>\n</div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/home/hello_vuejs/components/task_list.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["\n/*  .my-task-list {\n    color: #ffcc00;\n  } */\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"../model/task":6,"../model/task_list":7,"./task.vue":1,"vue":10,"vue-hot-reload-api":9,"vueify-insert-css":11}],3:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -8,7 +104,7 @@ module.exports = {
         };
     },
     created: function created() {
-        console.log('できたで！');
+        console.log('できたで100！');
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -24,33 +120,46 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, module.exports.template)
   }
 })()}
-},{"vue":6,"vue-hot-reload-api":5}],2:[function(require,module,exports){
+},{"vue":10,"vue-hot-reload-api":9}],4:[function(require,module,exports){
+(function (global){
 'use strict';
 
 var Vue = require('vue');
 
-// var TaskList = require('./model/task_list').default
-// var task_list = global.task_list = new TaskList
+var TaskList = require('./model/task_list').default;
+var task_list = global.task_list = new TaskList();
 
-var mwRatingMsg = require('./mixins/mw-rating-msg.js');
+var mwRatingMsg = require('./mixins/mw-rating-msg.js').default;
+var mw_rating_msg = global.mw_rating_msg = mwRatingMsg;
+// console.log('mwRatingMsg', mwRatingMsg);
 
 new Vue({
   el: 'body',
-  // mixins: {
-  //   mwRatingMsg
-  // },
+  mixins: {
+    // mwRatingMsg:require('./mixins/mw-rating-msg.vue')
+    mwRatingMsg: mw_rating_msg
+  },
   data: {
-    // list: task_list,
+    list: task_list,
     showHideFlg: false
   },
   components: {
-    MyComponent: require('./components/test-my-component.vue')
-    // MyTaskList: require('./components/task_list.vue'),
-    // MsgBox: require('./components/test-msg-box.vue')
+    MyComponent: require('./components/test-my-component.vue'),
+    MyTaskList: require('./components/task_list.vue')
+    //MsgBox: require('./components/test-msg-box.vue')
+  },
+  created: function created() {
+    console.log(mw_rating_msg, this);
+  },
+  methods: {
+    con: function con() {
+      console.log(mw_rating_msg, this);
+    }
   }
 });
 
-},{"./components/test-my-component.vue":1,"./mixins/mw-rating-msg.js":3,"vue":6}],3:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./components/task_list.vue":2,"./components/test-my-component.vue":3,"./mixins/mw-rating-msg.js":5,"./model/task_list":7,"vue":10}],5:[function(require,module,exports){
 'use strict';
 
 var mwRatingMsg = {
@@ -77,7 +186,89 @@ var mwRatingMsg = {
     }
 };
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Task = function Task() {
+  var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  _classCallCheck(this, Task);
+
+  this.title = source.title || '';
+  this.estimated_on = source.estimated_on || '';
+  this.completed_at = source.completed_at || '';
+  this.memo = source.memo || '';
+};
+
+exports.default = Task;
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Task = require('./task').default;
+
+var TaskList = function () {
+  function TaskList() {
+    var _this = this;
+
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+
+    _classCallCheck(this, TaskList);
+
+    var source = TaskList.fetch(name);
+
+    this.title = source.title || name;
+    this.tasks = [];
+    var tasks = source.tasks || [];
+    tasks.forEach(function (task) {
+      _this.tasks.push(new Task(task));
+    });
+  }
+
+  _createClass(TaskList, [{
+    key: 'add',
+    value: function add(task) {
+      this.tasks.push(task);
+    }
+  }, {
+    key: 'save',
+    value: function save() {
+      localStorage.setItem(TaskList.storage_key(this.title), JSON.stringify(this));
+    }
+  }], [{
+    key: 'storage_key',
+    value: function storage_key(name) {
+      return 'hello-vuejs-' + name;
+    }
+  }, {
+    key: 'fetch',
+    value: function fetch() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+
+      return JSON.parse(localStorage.getItem(TaskList.storage_key(name)) || '{}');
+    }
+  }]);
+
+  return TaskList;
+}();
+
+exports.default = TaskList;
+
+},{"./task":6}],8:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -259,7 +450,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],5:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var Vue // late bind
 var map = Object.create(null)
 var shimmed = false
@@ -560,7 +751,7 @@ function format (id) {
   return match ? match[0] : id
 }
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (process){
 /*!
  * Vue.js v1.0.28
@@ -10801,4 +10992,24 @@ setTimeout(function () {
 
 module.exports = Vue;
 }).call(this,require('_process'))
-},{"_process":4}]},{},[2]);
+},{"_process":8}],11:[function(require,module,exports){
+var inserted = exports.cache = {}
+
+exports.insert = function (css) {
+  if (inserted[css]) return
+  inserted[css] = true
+
+  var elem = document.createElement('style')
+  elem.setAttribute('type', 'text/css')
+
+  if ('textContent' in elem) {
+    elem.textContent = css
+  } else {
+    elem.styleSheet.cssText = css
+  }
+
+  document.getElementsByTagName('head')[0].appendChild(elem)
+  return elem
+}
+
+},{}]},{},[4]);

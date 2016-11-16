@@ -6,10 +6,11 @@
   </head>
   <body>
     <div>
-      <!-- <my-task-list :list="list"></my-task-list> -->
+      <my-task-list :list="list"></my-task-list>
       <!-- <msg-box></msg-box> -->
       <my-component></my-component>
-      <div @click="showHideFlg = !showHideFlg">押して！</div>
+      <div @click="showHideFlg = !showHideFlg">押して2！</div>
+      <div @click="con">console！</div>
       <div v-if="showHideFlg">いぇ〜い！押したね！</div>
     </div>
   </body>
