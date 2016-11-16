@@ -2,11 +2,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello, World.</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="app">
+    <div>
+      <!-- <my-task-list :list="list"></my-task-list> -->
       <my-component></my-component>
-      <my-task-list :list="list"></my-task-list>
+      <!-- <msg-box></msg-box> -->
+      <div @click="showHideFlg = !showHideFlg">押して！</div>
+      <div v-if="showHideFlg">いぇ〜い！</div>
     </div>
   </body>
   <script type="text/javascript" src="./bundle.js"></script>

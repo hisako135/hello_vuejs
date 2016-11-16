@@ -1,12 +1,3 @@
-<style>
-.msgBox {
-    background-color: #000;
-}
-.msgBox__star, msgBox__close {
-    color: #fff;
-}
-</style>
-
 <template>
 <div class="msgBox" v-if="mwRatingMsg.flg" v-bind:style="[mwRatingMsg.style]">
     <div class="msgBox__star">★★★★★</div>

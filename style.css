@@ -1,0 +1,10 @@
+.msgBox {
+    background-color: #000;
+}
+.msgBox__star, msgBox__close {
+    color: #fff;
+}
+
+.myComponent {
+    color:red;
+}
