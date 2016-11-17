@@ -1,4 +1,4 @@
-var mwRatingMsg = {
+module.exports =  {
     data: function () {
         return {
             mwRatingMsg: {
@@ -20,4 +20,4 @@ var mwRatingMsg = {
             vu.mwRatingMsg.flg = false;
         }
     }
-};
+}

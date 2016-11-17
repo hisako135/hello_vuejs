@@ -6,8 +6,12 @@
 </template>
 
 <script>
+var mwRatingMsg =  require('../mixins/mw-rating-msg');
+
+console.log('《test-msg-box.vue》 mwRatingMsg : ', mwRatingMsg);
+
 module.exports = {
-    props: ['mwRatingMsg'],
+    props: [mwRatingMsg],
     methods: {
       closeRatingMsg: function(){
         this.$dispatch('_closeRatingMsg');
