@@ -14,6 +14,7 @@ var mwRatingMsg =  {
             var vu = this;
             vu.mwRatingMsg.flg = true;
             vu.$set('mwRatingMsg.style.top', window.pageYOffset + 'px');
+            console.log(vu.mwRatingMsg.flg);
         },
         _closeRatingMsg: function() {
             var vu = this;

@@ -1,11 +1,11 @@
-var Vue = require('vue')
+var Vue = require('vue/dist/vue.js')
 
 import mwRatingMsg from './mixins/mw-rating-msg'
 Vue.use(mwRatingMsg);
 console.log('《main.js》 mwRatingMsg : ' ,mwRatingMsg);
 
 new Vue({
-  el: 'body',
+  el: '.v-wrapper',
   mixins: {
     mwRatingMsg:mwRatingMsg
   },

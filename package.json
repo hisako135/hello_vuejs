@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "vue": "^1.0.8"
+    "vue": "^2.0.7"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.1.18",
@@ -29,8 +29,9 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.6",
     "vinyl-source-stream": "^1.1.0",
+    "vue": "^2.0.7",
     "vue-hot-reload-api": "^1.2.1",
-    "vueify": "^6.0.0",
+    "vueify": "^9.2.4",
     "vueify-insert-css": "^1.0.0"
   },
   "browserify": {
