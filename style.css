@@ -8,3 +8,7 @@
 .myComponent {
     color:red;
 }
+
+.msgBox__close {
+    color: #fff;
+}

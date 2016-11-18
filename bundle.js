@@ -1,12 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var mwRatingMsg = require('../mixins/mw-rating-msg');
-
-console.log('《test-msg-box.vue》 mwRatingMsg : ', mwRatingMsg);
-
 module.exports = {
-  props: [mwRatingMsg],
   methods: {
     closeRatingMsg: function closeRatingMsg() {
       this.$dispatch('_closeRatingMsg');
@@ -14,7 +9,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n    <div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n        <div class=\"msgBox__star\">YOUR RATE：★★★★★</div>\n        <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">CLOSE</div>\n    </div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n    <div v-if=\"mwRatingMsg\" @click=\"mwRatingMsg.flg = !mwRatingMsg.flg\">COMFIRM YOUR RATE</div>\n    <div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n        <div class=\"msgBox__star\">YOUR RATE：★★★★★</div>\n        <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">CLOSE</div>\n    </div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -26,7 +21,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, module.exports.template)
   }
 })()}
-},{"../mixins/mw-rating-msg":4,"vue":7,"vue-hot-reload-api":6}],2:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":6}],2:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -55,15 +50,21 @@ if (module.hot) {(function () {  module.hot.accept()
 },{"vue":7,"vue-hot-reload-api":6}],3:[function(require,module,exports){
 'use strict';
 
+var _mwRatingMsg = require('./mixins/mw-rating-msg');
+
+var _mwRatingMsg2 = _interopRequireDefault(_mwRatingMsg);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var Vue = require('vue');
 
-var mwRatingMsg = require('./mixins/mw-rating-msg');
-console.log('《main.js》 mwRatingMsg : ', mwRatingMsg);
+Vue.use(_mwRatingMsg2.default);
+console.log('《main.js》 mwRatingMsg : ', _mwRatingMsg2.default);
 
 new Vue({
   el: 'body',
   mixins: {
-    mwRatingMsg: mwRatingMsg
+    mwRatingMsg: _mwRatingMsg2.default
   },
   data: {
     showHideFlg: false
@@ -85,7 +86,10 @@ new Vue({
 },{"./components/test-msg-box.vue":1,"./components/test-my-component.vue":2,"./mixins/mw-rating-msg":4,"vue":7}],4:[function(require,module,exports){
 'use strict';
 
-module.exports = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var mwRatingMsg = {
     data: function data() {
         return {
             mwRatingMsg: {
@@ -105,7 +109,14 @@ module.exports = {
         _closeRatingMsg: function _closeRatingMsg() {
             var vu = this;
             vu.mwRatingMsg.flg = false;
+            console.log(vu.mwRatingMsg.flg);
         }
+    }
+};
+
+exports.default = {
+    install: function install(Vue, option) {
+        Vue.mixin(mwRatingMsg);
     }
 };
 

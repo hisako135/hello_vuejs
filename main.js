@@ -1,6 +1,7 @@
 var Vue = require('vue')
 
-var mwRatingMsg = require('./mixins/mw-rating-msg');
+import mwRatingMsg from './mixins/mw-rating-msg'
+Vue.use(mwRatingMsg);
 console.log('《main.js》 mwRatingMsg : ' ,mwRatingMsg);
 
 new Vue({

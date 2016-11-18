@@ -1,4 +1,4 @@
-module.exports =  {
+var mwRatingMsg =  {
     data: function () {
         return {
             mwRatingMsg: {
@@ -18,6 +18,13 @@ module.exports =  {
         _closeRatingMsg: function() {
             var vu = this;
             vu.mwRatingMsg.flg = false;
+            console.log(vu.mwRatingMsg.flg);
         }
+    }
+}
+
+export default {
+    install (Vue, option) {
+        Vue.mixin(mwRatingMsg)
     }
 }
