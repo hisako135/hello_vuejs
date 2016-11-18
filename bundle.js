@@ -36,7 +36,7 @@ module.exports = {
         };
     },
     created: function created() {
-        console.log('できたで100！');
+        console.log('created Hello!');
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
