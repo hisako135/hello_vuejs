@@ -6,7 +6,7 @@ var mwRatingMsg = require('../mixins/mw-rating-msg');
 console.log('《test-msg-box.vue》 mwRatingMsg : ', mwRatingMsg);
 
 module.exports = {
-  props: mwRatingMsg,
+  props: [mwRatingMsg],
   methods: {
     closeRatingMsg: function closeRatingMsg() {
       this.$dispatch('_closeRatingMsg');
@@ -14,7 +14,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n    <div class=\"msgBox__star\">★★★★★</div>\n    <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">閉じる</div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n    <div class=\"msgBox__star\">YOUR RATE：★★★★★</div>\n    <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">CLOSE</div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -77,7 +77,7 @@ new Vue({
   },
   methods: {
     con: function con() {
-      // console.log(mwRatingMsg, this);
+      console.log(mwRatingMsg, this);
     }
   }
 });

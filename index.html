@@ -8,9 +8,9 @@
     <div>
       <msg-box></msg-box>
       <my-component></my-component>
-      <div @click="showHideFlg = !showHideFlg">押して2！</div>
+      <div @click="showHideFlg = !showHideFlg">PUSH！</div>
+      <div v-if="showHideFlg">YOU PUSHED</div>
       <div @click="con">console！</div>
-      <div v-if="showHideFlg">いぇ〜い！押したね！</div>
     </div>
   </body>
   <script type="text/javascript" src="./bundle.js"></script>

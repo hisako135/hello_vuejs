@@ -20,7 +20,7 @@ new Vue({
     },
     methods:{
         con: function(){
-            // console.log(mwRatingMsg, this);
+            console.log(mwRatingMsg, this);
         }
     }
 })
