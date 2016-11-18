@@ -14,7 +14,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n    <div class=\"msgBox__star\">YOUR RATE：★★★★★</div>\n    <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">CLOSE</div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n    <div class=\"msgBox\" v-if=\"mwRatingMsg.flg\" v-bind:style=\"[mwRatingMsg.style]\">\n        <div class=\"msgBox__star\">YOUR RATE：★★★★★</div>\n        <div class=\"msgBox__close\" @click=\"closeRatingMsg()\">CLOSE</div>\n    </div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -73,11 +73,11 @@ new Vue({
     MsgBox: require('./components/test-msg-box.vue')
   },
   created: function created() {
-    // console.log(mwRatingMsg, this);
+    console.log('《main.js：created》 ', this);
   },
   methods: {
     con: function con() {
-      console.log(mwRatingMsg, this);
+      console.log('《main.js：con()》 ', this);
     }
   }
 });

@@ -16,11 +16,11 @@ new Vue({
     MsgBox: require('./components/test-msg-box.vue')
   },
     created: function(){
-        // console.log(mwRatingMsg, this);
+        console.log('《main.js：created》 ', this);
     },
     methods:{
         con: function(){
-            console.log(mwRatingMsg, this);
+            console.log('《main.js：con()》 ', this);
         }
     }
 })
